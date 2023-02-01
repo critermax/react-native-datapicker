@@ -1,7 +1,7 @@
 {
-  "name": "react-native-datepicker",
-  "version": "1.7.2",
-  "description": "React Native DatePicker component for both Android and iOS, useing DatePickerAndroid, TimePickerAndroid and DatePickerIOS",
+  "name": "react-native-datepicker-expo",
+  "version": "1.7.3",
+  "description": "Fork to xgfe, React Native DatePicker component for both Android and iOS, use DatePickerAndroid, TimePickerAndroid and DatePickerIOS , fixed to EXPO SDK 47",
   "main": "datepicker.js",
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
