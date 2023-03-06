@@ -32,6 +32,7 @@ class DatePicker extends Component {
       animatedHeight: new Animated.Value(0),
       allowPointerEvents: true,
       isPicker: false,
+      useNativeDriver: false,
     };
 
     this.getDate = this.getDate.bind(this);
@@ -61,9 +62,11 @@ class DatePicker extends Component {
       this.setState({modalVisible: visible});
       return Animated.timing(
         this.state.animatedHeight,
+        
         {
           toValue: height,
-          duration: duration
+          duration: duration,
+          useNativeDriver: false
         }
       ).start();
     } else {
@@ -71,7 +74,8 @@ class DatePicker extends Component {
         this.state.animatedHeight,
         {
           toValue: 0,
-          duration: duration
+          duration: duration,
+          useNativeDriver: false
         }
       ).start(() => {
         this.setState({modalVisible: visible});
@@ -184,6 +188,7 @@ class DatePicker extends Component {
   onDateChange(event,date) {
     this.setState({
       allowPointerEvents: false,
+      useNativeDriver: false,
       date: date
     });
     const timeoutId = setTimeout(() => {
@@ -328,7 +333,7 @@ class DatePicker extends Component {
                   style={{flex: 1}}
                 >
                   <Animated.View
-                    style={[Style.datePickerCon, {height: this.state.animatedHeight}, customStyles.datePickerCon]}
+                    style={[Style.datePickerCon, {height: this.state.animatedHeight}, customStyles.datePickerCon, {useNativeDriver: false} ]}
                   >
                     <View pointerEvents={this.state.allowPointerEvents ? 'auto' : 'none'}>
                       <DateTimePicker
@@ -341,6 +346,7 @@ class DatePicker extends Component {
                         timeZoneOffsetInMinutes={timeZoneOffsetInMinutes ? timeZoneOffsetInMinutes : null}
                         style={[Style.datePicker, customStyles.datePicker]}
                         locale={locale}
+                        
                       />
                     </View>
                     <TouchableComponent
